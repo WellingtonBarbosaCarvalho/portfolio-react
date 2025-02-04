@@ -1,0 +1,81 @@
+nav {
+    position: sticky; /* Fixa o navbar no topo durante a rolagem */
+    top: 0;
+    width: 100%;
+    padding: 1rem 2rem;
+    background: linear-gradient(135deg, #1a73e8, #673ab7); /* Gradiente de cores */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+    transition: background 0.5s ease;
+  }
+  
+  nav:hover {
+    /* Altera o gradiente ao passar o mouse sobre o nav (opcional) */
+    background: linear-gradient(135deg, #1565c0, #512da8);
+  }
+  
+  /* Configuração do layout do menu */
+  nav ul {
+    list-style: none; /* Remove os marcadores da lista */
+    margin: 0;
+    padding: 0;
+    display: flex;             /* Layout flex para centralizar os itens */
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Espaçamento e posicionamento dos itens */
+  nav li {
+    margin: 0 1.5rem;
+    position: relative; /* Necessário para posicionar o pseudo-elemento */
+  }
+  
+  /* Estilização dos links */
+  nav a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 0.5rem 1rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+    position: relative;
+    z-index: 1;
+  }
+  
+  /* Efeito de hover com pseudo-elemento para fundo animado */
+  nav a::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%; /* Inicia sem exibir */
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    transition: width 0.3s ease;
+    z-index: -1;
+  }
+  
+  nav a:hover::before {
+    width: 100%; /* Expande o fundo ao passar o mouse */
+  }
+  
+  /* Efeito de hover para alterar a cor e aumentar levemente o link */
+  nav a:hover {
+    color: #ffeb3b;
+    transform: scale(1.05);
+  }
+  
+  /* Responsividade: ajusta o layout em telas menores */
+  @media screen and (max-width: 768px) {
+    nav ul {
+      flex-direction: column;
+      padding: 1rem 0;
+    }
+    
+    nav li {
+      margin: 0.5rem 0;
+    }
+  }
+  

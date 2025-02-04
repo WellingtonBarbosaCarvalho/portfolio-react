@@ -1,0 +1,134 @@
+/* src/components/Contato.css */
+
+.contato-page {
+    padding: 60px 20px;
+    background: linear-gradient(135deg, #ffffff, #f0f4f8);
+    min-height: 100vh;
+    color: #333;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  .contato-page h1 {
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 40px;
+    color: #1a73e8;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  
+  .contato-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .form-section,
+  .whatsapp-section {
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    flex: 1 1 400px;
+  }
+  
+  .form-section h2,
+  .whatsapp-section h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #1a73e8;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #555;
+  }
+  
+  .form-group input,
+  .form-group textarea {
+    width: 100%;
+    padding: 10px 15px;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .form-group input:focus,
+  .form-group textarea:focus {
+    border-color: #1a73e8;
+    box-shadow: 0 0 8px rgba(26, 115, 232, 0.3);
+    outline: none;
+  }
+  
+  .btn {
+    display: inline-block;
+    padding: 12px 24px;
+    background: linear-gradient(45deg, #ffeb3b, #fdd835);
+    color: #333;
+    border: none;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: transform 0.3s ease, background 0.3s ease;
+    text-decoration: none;
+  }
+  
+  .btn:hover {
+    transform: scale(1.05);
+  }
+  
+  .submit-btn {
+    margin-top: 10px;
+  }
+  
+  .success-message {
+    padding: 10px;
+    background: #d4edda;
+    border: 1px solid #c3e6cb;
+    color: #155724;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  /* WhatsApp Section */
+  .whatsapp-section {
+    text-align: center;
+  }
+  
+  .whatsapp-section p {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    color: #555;
+  }
+  
+  .whatsapp-btn {
+    background: #25d366;
+    color: #fff;
+    margin-top: 20px;
+  }
+  
+  .whatsapp-btn:hover {
+    background: #1ebe57;
+  }
+  
+  /* Responsividade */
+  @media (max-width: 768px) {
+    .contato-container {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  

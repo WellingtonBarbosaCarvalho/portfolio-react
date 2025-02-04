@@ -1,0 +1,134 @@
+/* src/components/QuebraCabecaMagico.css */
+
+/* Container principal com fundo suave e layout centralizado */
+.quebra-cabeca-magico {
+    padding: 40px 20px;
+    text-align: center;
+    background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+    min-height: 100vh;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Título com animação de entrada, cores vibrantes e efeito uppercase */
+  .quebra-cabeca-magico h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: #1a73e8;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    animation: fadeInDown 1s ease-out;
+  }
+  
+  /* Grid para o puzzle com espaçamento e layout responsivo */
+  .puzzle-container {
+    display: grid;
+    grid-template-columns: repeat(3, 120px);
+    grid-template-rows: repeat(3, 120px);
+    gap: 10px;
+    margin-bottom: 20px;
+    justify-content: center;
+  }
+  
+  /* Peças do quebra-cabeça com gradiente, sombra e efeito hover */
+  .puzzle-tile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    background: linear-gradient(145deg, #1a73e8, #1565c0);
+    color: #fff;
+    border-radius: 10px;
+    cursor: pointer;
+    user-select: none;
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.2), -5px -5px 10px rgba(255,255,255,0.5);
+    transition: transform 0.3s ease, background 0.3s ease;
+  }
+  
+  .puzzle-tile:hover {
+    transform: scale(1.05);
+    background: linear-gradient(145deg, #1565c0, #1a73e8);
+  }
+  
+  /* Peça vazia com cor neutra e sem efeito de hover */
+  .puzzle-tile.empty {
+    background: #e0e0e0;
+    cursor: default;
+    box-shadow: none;
+  }
+  
+  /* Estatísticas e mensagens com tipografia agradável */
+  .stats {
+    margin-bottom: 20px;
+    font-size: 1.25rem;
+  }
+  
+  .congrats {
+    color: green;
+    font-weight: bold;
+    margin-top: 10px;
+    animation: fadeIn 1s ease-out;
+  }
+  
+  /* Botões com gradiente, bordas arredondadas e efeito animado, igual ao dos outros jogos */
+  .btn {
+    background: linear-gradient(45deg, #ffeb3b, #fdd835);
+    color: #333;
+    padding: 0.75rem 2rem;
+    border: none;
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 1rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .btn::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.3) 10%, transparent 10.01%);
+    background-size: 50px 50px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .btn:hover::before {
+    opacity: 1;
+  }
+  
+  .btn:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Keyframes para animações (compartilhados com outros jogos) */
+  @keyframes fadeInDown {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  

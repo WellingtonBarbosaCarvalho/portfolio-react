@@ -1,0 +1,43 @@
+/* src/components/Contact.css */
+
+.contact-page {
+    padding: 80px 20px;
+    text-align: center;
+    background-color: #f5f5f5;
+  }
+  
+  .contact-page h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #1a73e8;
+  }
+  
+  .contact-page p {
+    max-width: 700px;
+    margin: 0 auto 20px auto;
+    font-size: 1.125rem;
+    line-height: 1.8;
+    color: #333;
+  }
+  
+  .contact-page .btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background-color: #673ab7;
+    color: #fff;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .contact-page .btn:hover {
+    background-color: #512da8;
+    transform: scale(1.05);
+  }
+  
+  @media (max-width: 768px) {
+    .contact-page h1 {
+      font-size: 2rem;
+    }
+  }
+  

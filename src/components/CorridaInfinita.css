@@ -1,0 +1,131 @@
+/* src/components/CorridaInfinita.css */
+
+/* Container principal com um fundo dinâmico e atmosfera vibrante */
+.corrida-infinita-game {
+    padding: 40px 20px;
+    text-align: center;
+    background: linear-gradient(135deg, #a8c0ff, #3f2b96);
+    min-height: 100vh;
+    color: #fff;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Título com animação de entrada, efeito uppercase e sombra */
+  .corrida-infinita-game h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+    animation: fadeInDown 1s ease-out;
+  }
+  
+  /* Canvas com borda, arredondamento e efeito hover para leve zoom */
+  canvas {
+    border: 3px solid #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease;
+    background-color: #d0e7f9;
+  }
+  
+  canvas:hover {
+    transform: scale(1.03);
+  }
+  
+  /* Overlay de Game Over com efeito glassmorphism e animação suave */
+  .game-over {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    padding: 40px 60px;
+    border-radius: 12px;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.6);
+    animation: fadeIn 0.5s ease-out;
+  }
+  
+  .game-over h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #ffeb3b;
+  }
+  
+  .game-over p {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+  
+  /* Botões modernos com gradiente, sombra e efeito animado no hover */
+  .btn {
+    background: linear-gradient(45deg, #ffeb3b, #fdd835);
+    color: #333;
+    padding: 0.75rem 2rem;
+    border: none;
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 1rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .btn::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.3) 10%, transparent 10.01%);
+    background-size: 50px 50px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .btn:hover::before {
+    opacity: 1;
+  }
+  
+  .btn:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Instruções de início com animação */
+  .start-instructions {
+    margin-top: 20px;
+    font-size: 1.25rem;
+    animation: fadeIn 1s ease-out;
+  }
+  
+  /* Keyframes para animações */
+  @keyframes fadeInDown {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  

@@ -1,0 +1,38 @@
+/* src/components/Footer.css */
+
+.footer {
+    background: #1a73e8;
+    padding: 20px;
+    text-align: center;
+    color: #fff;
+  }
+  
+  .footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .footer-content p {
+    margin: 0;
+    font-size: 1rem;
+  }
+  
+  .social-links {
+    margin-top: 10px;
+  }
+  
+  .social-links a {
+    margin: 0 10px;
+    display: inline-block;
+    transition: transform 0.3s ease;
+  }
+  
+  .social-links a:hover {
+    transform: scale(1.1);
+  }
+  
+  .social-links img {
+    width: 30px;
+    height: 30px;
+  }
+  

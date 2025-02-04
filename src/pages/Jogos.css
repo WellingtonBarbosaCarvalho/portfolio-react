@@ -1,0 +1,68 @@
+/* src/components/Jogos.css */
+
+.jogos-page {
+  padding: 80px 20px;
+  text-align: center;
+  background-color: #fff;
+}
+
+.jogos-page h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #1a73e8;
+}
+
+.jogos-page p {
+  max-width: 700px;
+  margin: 0 auto;
+  font-size: 1.125rem;
+  line-height: 1.8;
+  color: #333;
+}
+
+.project-list {
+  margin-top: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.project-item {
+  background: #f5f5f5;
+  padding: 20px;
+  border-radius: 8px;
+  width: 300px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 12px rgba(0,0,0,0.15);
+}
+
+.project-item h3 {
+  color: #673ab7;
+  margin-bottom: 1rem;
+}
+
+/* Botão padrão para os cards, igual ao da Home */
+.project-item .btn {
+  background-color: #1a73e8;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.project-item .btn:hover {
+  background-color: #1565c0;
+}
+
+@media (max-width: 768px) {
+  .jogos-page h1 {
+    font-size: 2rem;
+  }
+}
