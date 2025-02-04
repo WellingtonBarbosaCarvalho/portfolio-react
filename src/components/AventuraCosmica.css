@@ -1,131 +1,115 @@
 /* src/components/AventuraCosmica.css */
-
-/* Container principal com fundo espacial, centralizado e responsivo */
 .aventura-cosmica-game {
-    padding: 40px 20px;
-    text-align: center;
-    background: radial-gradient(ellipse at center, #0b0d17 0%, #000 70%);
-    min-height: 100vh;
-    color: #fff;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  /* Título com efeito de fade-in e sombra para destaque */
-  .aventura-cosmica-game h1 {
-    font-size: 3rem;
-    margin-bottom: 20px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
-    animation: fadeInDown 1s ease-out;
-  }
-  
-  /* Estilização avançada para o canvas: borda, sombras e leve zoom no hover */
-  canvas {
-    border: 3px solid #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
-    background-color: transparent;
-    transition: transform 0.3s ease;
-  }
-  
-  canvas:hover {
-    transform: scale(1.02);
-  }
-  
-  /* Overlay de Game Over com efeito glassmorphism, animação e borda semitransparente */
-  .game-over {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    padding: 40px 60px;
-    border-radius: 12px;
-    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
-    animation: fadeIn 0.5s ease-out;
-  }
-  
-  .game-over h2 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-    color: #ffeb3b;
-  }
-  
-  .game-over p {
-    font-size: 1.5rem;
-    margin-bottom: 20px;
-  }
-  
-  /* Botões com gradiente, bordas arredondadas e efeito hover com pseudo-elemento animado */
-  .btn {
-    background: linear-gradient(45deg, #ffeb3b, #fdd835);
-    color: #333;
-    padding: 0.75rem 2rem;
-    border: none;
-    border-radius: 30px;
-    font-weight: bold;
-    font-size: 1rem;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .btn::before {
-    content: "";
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 10%, transparent 10.01%);
-    background-size: 50px 50px;
+  padding: 40px 20px;
+  text-align: center;
+  background: radial-gradient(ellipse at center, #0b0d17 0%, #000 70%);
+  min-height: 100vh;
+  color: #fff;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.aventura-cosmica-game h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+  animation: fadeInDown 1s ease-out;
+}
+
+.aventura-cosmica-game p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.game-container {
+  background-color: rgba(26, 115, 232, 0.2);
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  margin-top: 20px;
+  width: 90%;
+  max-width: 600px;
+  cursor: pointer;
+}
+
+.game-container p {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.btn {
+  background: linear-gradient(45deg, #ffeb3b, #fdd835);
+  color: #333;
+  padding: 0.75rem 2rem;
+  border: none;
+  border-radius: 30px;
+  font-weight: bold;
+  font-size: 1rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 0.3s ease, background 0.3s ease;
+  outline: none;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+}
+
+.game-over {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  padding: 40px 60px;
+  border-radius: 12px;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.6);
+  animation: fadeIn 0.5s ease-out;
+}
+
+.game-over h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #ffeb3b;
+}
+
+.game-over p {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+@keyframes fadeInDown {
+  from {
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transform: translateY(-20px);
   }
-  
-  .btn:hover::before {
+  to {
     opacity: 1;
+    transform: translateY(0);
   }
-  
-  .btn:hover {
-    transform: scale(1.05);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@media (max-width: 768px) {
+  .aventura-cosmica-game h1 {
+    font-size: 2.5rem;
   }
-  
-  /* Instruções de início com animação */
-  .start-instructions {
-    margin-top: 20px;
-    font-size: 1.25rem;
-    animation: fadeIn 1s ease-out;
+  .game-container p {
+    font-size: 1.3rem;
   }
-  
-  /* Keyframes para animações */
-  @keyframes fadeInDown {
-    from {
-      opacity: 0;
-      transform: translateY(-20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  .btn {
+    padding: 0.65rem 1.5rem;
+    font-size: 0.9rem;
   }
-  
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-  
+}

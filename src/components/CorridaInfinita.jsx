@@ -7,8 +7,9 @@ function CorridaInfinita() {
   const [score, setScore] = useState(0);
   const [gameOver, setGameOver] = useState(false);
   const [started, setStarted] = useState(false);
+  const [restartKey, setRestartKey] = useState(0); // usado para reinicializar o efeito
 
-  // Usamos uma ref para armazenar o estado do jogo sem causar re-render a cada frame.
+  // Armazena o estado interno do jogo
   const gameState = useRef({
     runner: { x: 50, y: 300, width: 30, height: 30, vy: 0 },
     obstacles: [],
@@ -20,7 +21,6 @@ function CorridaInfinita() {
   useEffect(() => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
-    // Usaremos dimensões fixas para o cálculo interno do jogo
     const canvasWidth = 800;
     const canvasHeight = 400;
     canvas.width = canvasWidth;
@@ -30,42 +30,16 @@ function CorridaInfinita() {
     const gravity = 0.7;
     const jumpVelocity = -12;
 
-    // Reinicia o jogo
-    function resetGame() {
-      gameState.current.runner = { x: 50, y: 300, width: 30, height: 30, vy: 0 };
-      gameState.current.obstacles = [];
-      gameState.current.lastObstacleTime = 0;
-      gameState.current.score = 0;
-      setScore(0);
-      setGameOver(false);
-    }
+    // Reinicializa o estado interno sempre que reiniciamos
+    gameState.current.runner = { x: 50, y: 300, width: 30, height: 30, vy: 0 };
+    gameState.current.obstacles = [];
+    gameState.current.lastObstacleTime = 0;
+    gameState.current.score = 0;
+    setScore(0);
+    setGameOver(false);
 
-    // Função para o pulo: chamada tanto em clique, toque ou tecla (barra de espaço)
-    function handleJump(e) {
-      e.preventDefault();
-      if (!started) {
-        setStarted(true);
-        resetGame();
-        requestAnimationFrame(gameLoop);
-      }
-      // Permite pular apenas se estiver no "chão"
-      if (gameState.current.runner.y >= 300) {
-        gameState.current.runner.vy = jumpVelocity;
-      }
-    }
-
-    function handleKeyDown(e) {
-      if (e.code === 'Space') {
-        e.preventDefault();
-        handleJump(e);
-      }
-    }
-
-    // Adiciona os event listeners para teclado, clique e toque
-    window.addEventListener('keydown', handleKeyDown);
-    window.addEventListener('touchstart', handleJump, { passive: false });
-    canvas.addEventListener('click', handleJump);
-    canvas.addEventListener('touchstart', handleJump, { passive: false });
+    // Se o jogo ainda não foi iniciado, não inicia o loop
+    if (!started) return;
 
     function update(deltaTime) {
       const state = gameState.current;
@@ -83,16 +57,14 @@ function CorridaInfinita() {
         const obstacleHeight = Math.random() * 20 + 20; // altura entre 20 e 40
         state.obstacles.push({
           x: canvasWidth,
-          y: 300 + 30 - obstacleHeight, // posiciona o obstáculo alinhado ao "chão"
+          y: 300 + 30 - obstacleHeight,
           width: 20,
           height: obstacleHeight,
           scored: false,
         });
       }
-      // Atualiza a posição dos obstáculos
-      state.obstacles.forEach(obs => {
-        obs.x -= 4;
-      });
+      // Atualiza posição dos obstáculos
+      state.obstacles.forEach(obs => { obs.x -= 4; });
       state.obstacles = state.obstacles.filter(obs => obs.x + obs.width > 0);
       // Verifica colisões e pontua
       for (let obs of state.obstacles) {
@@ -144,25 +116,48 @@ function CorridaInfinita() {
       }
     }
 
-    // Limpeza: remove event listeners quando o componente desmontar
+    if (started && !gameOver) {
+      gameState.current.requestId = requestAnimationFrame(gameLoop);
+    }
+
     return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-      window.removeEventListener('touchstart', handleJump);
-      canvas.removeEventListener('click', handleJump);
-      canvas.removeEventListener('touchstart', handleJump);
       cancelAnimationFrame(gameState.current.requestId);
     };
-  }, [started, gameOver]);
+  }, [started, gameOver, restartKey]);
+
+  // Função de pulo (dispara em clique ou toque)
+  function handleJump(e) {
+    e.preventDefault();
+    if (!started) {
+      setStarted(true);
+    }
+    if (gameState.current.runner.y >= 300) {
+      gameState.current.runner.vy = -12;
+    }
+  }
+
+  // Reinicia o jogo sem recarregar a página
+  function handleRestart(e) {
+    e.preventDefault();
+    setStarted(false);
+    setGameOver(false);
+    setScore(0);
+    setRestartKey(prev => prev + 1);
+  }
 
   return (
     <main className="corrida-infinita-game">
       <h1>Corrida Infinita</h1>
-      <canvas ref={canvasRef} />
+      <canvas
+        ref={canvasRef}
+        onClick={handleJump}
+        onTouchStart={handleJump}
+      />
       {gameOver && (
         <div className="game-over">
           <h2>Game Over</h2>
           <p>Pontuação: {score}</p>
-          <button className="btn" onClick={() => window.location.reload()}>
+          <button className="btn" onClick={handleRestart}>
             Reiniciar
           </button>
         </div>
