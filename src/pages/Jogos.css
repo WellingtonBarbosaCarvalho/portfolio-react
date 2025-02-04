@@ -4,6 +4,7 @@
   padding: 80px 20px;
   text-align: center;
   background-color: #fff;
+  min-height: 100vh;
 }
 
 .jogos-page h1 {
@@ -14,27 +15,28 @@
 
 .jogos-page p {
   max-width: 700px;
-  margin: 0 auto;
+  margin: 0 auto 20px auto;
   font-size: 1.125rem;
   line-height: 1.8;
   color: #333;
 }
 
 .project-list {
-  margin-top: 40px;
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
   justify-content: center;
 }
 
+/* Card (Project Item) */
 .project-item {
   background: #f5f5f5;
   padding: 20px;
-  border-radius: 8px;
   width: 300px;
+  border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
 }
 
 .project-item:hover {
@@ -42,12 +44,7 @@
   box-shadow: 0 8px 12px rgba(0,0,0,0.15);
 }
 
-.project-item h3 {
-  color: #673ab7;
-  margin-bottom: 1rem;
-}
-
-/* Botão padrão para os cards, igual ao da Home */
+/* Botão do card */
 .project-item .btn {
   background-color: #1a73e8;
   color: #fff;
@@ -61,8 +58,24 @@
   background-color: #1565c0;
 }
 
-@media (max-width: 768px) {
-  .jogos-page h1 {
-    font-size: 2rem;
-  }
+/* Preview Container (apenas a imagem, não cobrindo o card inteiro) */
+.preview-container {
+  margin-top: 15px;
+  text-align: center;
+}
+
+/* Preview Link */
+.preview {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.preview:hover {
+  transform: scale(1.05);
+}
+
+/* Preview Image */
+.preview img {
+  max-width: 100%;
+  border-radius: 4px;
 }
